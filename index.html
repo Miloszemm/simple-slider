@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider/Banner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="team">
+        <img src="slider/img/s1.png" alt="dziewczyna 1" class="color">
+        <img src="slider/img/s1a.png" alt="dziewczyna 1 szara" class="gray">
+        <div class="member">
+            <h1>Anna Kowalska</h1>
+            <h2>Programistka JS</h2>
+        </div>
+    </section>
+
+</body>
+
+<script>
+    //Parametry
+    let activeElement = 0;
+    const timeChange = 4000;
+
+    //Pobieramy 4 elementy na których pracujemy
+    const colorImgHtml = document.querySelector('.color');
+    const grayImgHtml = document.querySelector('.gray');
+    const h1Html = document.querySelector('.member h1');
+    const h2Html = document.querySelector('.member h2');
+
+    //Informacje o podmienieanych tablicach
+    const colorImages = ["slider/img/s1.png", "slider/img/s2.png", "slider/img/s3.png"];
+    const grayImages = ["slider/img/s1a.png", "slider/img/s2a.png", "slider/img/s3a.png"];
+    const names = ["Anna Kowalska", "Marek Nowak", "Arek Pawłowicz"];
+    const profession = ["Programistka JS", "UX i UI Designer", "Front-End Developer"];
+
+    function changeElement() {
+
+        activeElement++;
+
+        if (activeElement == colorImages.length) {
+            activeElement = 0;
+        }
+
+        colorImgHtml.src = colorImages[activeElement];
+        grayImgHtml.src = grayImages[activeElement];
+        h1Html.textContent = names[activeElement];
+        h2Html.textContent = profession[activeElement];
+    }
+
+    setInterval(changeElement, timeChange)
+</script>
+
+</html>
